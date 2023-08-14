@@ -21,6 +21,8 @@ name: Deploy DotNet project to Azure Function App
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - '.github/workflows/**'
 
 env:
   AZURE_FUNCTIONAPP_NAME: 'apiapptest345'   # set this to your function app name on Azure
@@ -43,8 +45,7 @@ jobs:
     - name: Check for resource compliance
       uses: azure/policy-compliance-scan@v0
       with:
-        scopes: |
-          /subscriptions/${{ secrets.SUBSCRIPTION_ID }}/resourceGroups/${{ secrets.RESOURCE_GROUP }}             
+        scopes: '/subscriptions/${{ secrets.SUBSCRIPTION_ID }}/resourceGroups/${{ secrets.RESOURCE_GROUP }}'        
 
     - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
       uses: actions/setup-dotnet@v3
