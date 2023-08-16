@@ -46,7 +46,7 @@ jobs:
     - name: Check for resource compliance
       uses: azure/policy-compliance-scan@v0
       with:
-        scopes: '/subscriptions/${{ secrets.SUBSCRIPTION_ID }}/resourceGroups/${{ secrets.RESOURCE_GROUP }}' 
+        scopes: '/subscriptions/${{ secrets.SUBSCRIPTION_ID }}/resourceGroups/${{ secrets.RESOURCE_GROUP }}/providers/Microsoft.ApiManagement/service/api-apitest34234' 
         reportName: 'policy-compliance-scan'       
 
     - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
